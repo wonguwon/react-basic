@@ -1,35 +1,98 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import Hello from "./components/Hello";
+import World from "./components/World";
+import VideoCard from "./components/VideoCard";
+import VideoList from "./components/VideoList";
+
+const videoData = [
+  {
+    sumbnail: 'https://i.ytimg.com/vi/Jdsgvf-ZcNY/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAJ8sDpODND6yFrORDlqOcDVTQE5A', // 유튜브 영상 ID (예시)
+    title: '친구들 연봉을 월급으로 받는 21살 대학생',
+    channelLogo: 'https://yt3.ggpht.com/gU-n-llr2Xgs-KWaEpHDG5cDyrLzfPlMHrHQbQ7-diLwklhHJeMkJVuPfq0wjQl53dHE-JW9DQ=s68-c-k-c0x00ffffff-no-rj',
+    channelName: '요즘 것들의 돈버는 이야기',
+    views: '8.3만회',
+    date: '1시간 전',
+  },
+  {
+    sumbnail: 'https://i.ytimg.com/vi/Jdsgvf-ZcNY/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAJ8sDpODND6yFrORDlqOcDVTQE5A', // 유튜브 영상 ID (예시)
+    title: '친구들 연봉을 월급으로 받는 21살 대학생',
+    channelLogo: 'https://yt3.ggpht.com/gU-n-llr2Xgs-KWaEpHDG5cDyrLzfPlMHrHQbQ7-diLwklhHJeMkJVuPfq0wjQl53dHE-JW9DQ=s68-c-k-c0x00ffffff-no-rj',
+    channelName: '요즘 것들의 돈버는 이야기',
+    views: '8.3만회',
+    date: '1시간 전',
+  },
+  {
+    sumbnail: 'https://i.ytimg.com/vi/Jdsgvf-ZcNY/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAJ8sDpODND6yFrORDlqOcDVTQE5A', // 유튜브 영상 ID (예시)
+    title: '친구들 연봉을 월급으로 받는 21살 대학생',
+    channelLogo: 'https://yt3.ggpht.com/gU-n-llr2Xgs-KWaEpHDG5cDyrLzfPlMHrHQbQ7-diLwklhHJeMkJVuPfq0wjQl53dHE-JW9DQ=s68-c-k-c0x00ffffff-no-rj',
+    channelName: '요즘 것들의 돈버는 이야기',
+    views: '8.3만회',
+    date: '1시간 전',
+  },  
+  {
+    sumbnail: 'https://i.ytimg.com/vi/Jdsgvf-ZcNY/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAJ8sDpODND6yFrORDlqOcDVTQE5A', // 유튜브 영상 ID (예시)
+    title: '친구들 연봉을 월급으로 받는 21살 대학생',
+    channelLogo: 'https://yt3.ggpht.com/gU-n-llr2Xgs-KWaEpHDG5cDyrLzfPlMHrHQbQ7-diLwklhHJeMkJVuPfq0wjQl53dHE-JW9DQ=s68-c-k-c0x00ffffff-no-rj',
+    channelName: '요즘 것들의 돈버는 이야기',
+    views: '8.3만회',
+    date: '1시간 전',
+  },
+  {
+    sumbnail: 'https://i.ytimg.com/vi/Jdsgvf-ZcNY/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAJ8sDpODND6yFrORDlqOcDVTQE5A', // 유튜브 영상 ID (예시)
+    title: '친구들 연봉을 월급으로 받는 21살 대학생',
+    channelLogo: 'https://yt3.ggpht.com/gU-n-llr2Xgs-KWaEpHDG5cDyrLzfPlMHrHQbQ7-diLwklhHJeMkJVuPfq0wjQl53dHE-JW9DQ=s68-c-k-c0x00ffffff-no-rj',
+    channelName: '요즘 것들의 돈버는 이야기',
+    views: '8.3만회',
+    date: '1시간 전',
+  },
+  {
+    sumbnail: 'https://i.ytimg.com/vi/Jdsgvf-ZcNY/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAJ8sDpODND6yFrORDlqOcDVTQE5A', // 유튜브 영상 ID (예시)
+    title: '친구들 연봉을 월급으로 받는 21살 대학생',
+    channelLogo: 'https://yt3.ggpht.com/gU-n-llr2Xgs-KWaEpHDG5cDyrLzfPlMHrHQbQ7-diLwklhHJeMkJVuPfq0wjQl53dHE-JW9DQ=s68-c-k-c0x00ffffff-no-rj',
+    channelName: '요즘 것들의 돈버는 이야기',
+    views: '8.3만회',
+    date: '1시간 전',
+  },  {
+    sumbnail: 'https://i.ytimg.com/vi/Jdsgvf-ZcNY/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAJ8sDpODND6yFrORDlqOcDVTQE5A', // 유튜브 영상 ID (예시)
+    title: '친구들 연봉을 월급으로 받는 21살 대학생',
+    channelLogo: 'https://yt3.ggpht.com/gU-n-llr2Xgs-KWaEpHDG5cDyrLzfPlMHrHQbQ7-diLwklhHJeMkJVuPfq0wjQl53dHE-JW9DQ=s68-c-k-c0x00ffffff-no-rj',
+    channelName: '요즘 것들의 돈버는 이야기',
+    views: '8.3만회',
+    date: '1시간 전',
+  },
+  {
+    sumbnail: 'https://i.ytimg.com/vi/Jdsgvf-ZcNY/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAJ8sDpODND6yFrORDlqOcDVTQE5A', // 유튜브 영상 ID (예시)
+    title: '친구들 연봉을 월급으로 받는 21살 대학생',
+    channelLogo: 'https://yt3.ggpht.com/gU-n-llr2Xgs-KWaEpHDG5cDyrLzfPlMHrHQbQ7-diLwklhHJeMkJVuPfq0wjQl53dHE-JW9DQ=s68-c-k-c0x00ffffff-no-rj',
+    channelName: '요즘 것들의 돈버는 이야기',
+    views: '8.3만회',
+    date: '1시간 전',
+  },
+  {
+    sumbnail: 'https://i.ytimg.com/vi/Jdsgvf-ZcNY/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAJ8sDpODND6yFrORDlqOcDVTQE5A', // 유튜브 영상 ID (예시)
+    title: '친구들 연봉을 월급으로 받는 21살 대학생',
+    channelLogo: 'https://yt3.ggpht.com/gU-n-llr2Xgs-KWaEpHDG5cDyrLzfPlMHrHQbQ7-diLwklhHJeMkJVuPfq0wjQl53dHE-JW9DQ=s68-c-k-c0x00ffffff-no-rj',
+    channelName: '요즘 것들의 돈버는 이야기',
+    views: '8.3만회',
+    date: '1시간 전',
+  },
+];
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div style={{ padding: 30 }}>
+      {/* <Hello /><World /> */}
+      {/* <VideoCard video={{
+        sumbnail: 'https://i.ytimg.com/vi/Jdsgvf-ZcNY/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAJ8sDpODND6yFrORDlqOcDVTQE5A', // 유튜브 영상 ID (예시)
+        title: '친구들 연봉을 월급으로 받는 21살 대학생',
+        channelLogo: 'https://yt3.ggpht.com/gU-n-llr2Xgs-KWaEpHDG5cDyrLzfPlMHrHQbQ7-diLwklhHJeMkJVuPfq0wjQl53dHE-JW9DQ=s68-c-k-c0x00ffffff-no-rj',
+        channelName: '요즘 것들의 돈버는 이야기',
+        views: '8.3만회',
+        date: '1시간 전',
+      }} /> */}
+      <VideoList videos={videoData}/>
+    </div>
+  );
 }
 
-export default App
+export default App;

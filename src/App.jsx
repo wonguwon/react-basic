@@ -7,6 +7,9 @@ import UseStateTest from './components/useState/useStateTest'
 import LandingPage from './components/useState/LandingPage'
 import UseRefTest from './components/useRef/UseRefTest'
 import UseRefScroll from './components/useRef/UseRefScroll'
+import UseEffectTest from './components/useEffect/UseEffectTest'
+import UseMemoTest from './components/useMemo/useMemoTest'
+import UseCallbackTest from './components/useCallback/UseCallbackTest'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -17,7 +20,10 @@ function App() {
       {/* <UseStateTest /> */}
       {/* <LandingPage /> */}
       {/* <UseRefTest /> */}
-      <UseRefScroll />
+      {/* <UseRefScroll /> */}
+      {/* <UseEffectTest/> */}
+      {/* <UseMemoTest /> */}
+      <UseCallbackTest />
     </>
   )
 }

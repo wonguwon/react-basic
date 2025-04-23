@@ -21,7 +21,7 @@ const UseMemoTest = () => {
 
   return (
     <div>
-      <h2>🔍 useMemo 최적화 테스트</h2>
+      <h2>useMemo 최적화 테스트</h2>
 
       <div style={{ marginBottom: '1rem' }}>
         <button onClick={increaseNum}>+</button>

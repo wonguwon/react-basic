@@ -23,7 +23,12 @@ function App() {
       {/* <UseRefScroll /> */}
       {/* <UseEffectTest/> */}
       {/* <UseMemoTest /> */}
-      <UseCallbackTest />
+      {/* <UseCallbackTest /> */}
+      {/* <BlackOrWhite /> */}
+      {/* <UserProvider>
+        <Header />
+        <Profile />
+      </UserProvider> */}
     </>
   )
 }

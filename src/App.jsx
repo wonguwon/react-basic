@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
+import IconButtons from './components/IconButtons';
+import GlobalStyle from './GlobalStyle';
+import ThemedBox from './components/ThemedBox';
+import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme } from './themes';
+import { ToastContainer, toast } from 'react-toastify';
+import { performToast } from './utils/performToast';
+import 'react-toastify/dist/ReactToastify.css';
+import SimpleForm from './components/SimpleForm';
+import LoaderDemo from './components/LoaderDemo';
+import TodoList from './components/TodoList';
+
+// toast.success('요청이 성공했습니다!');
+// toast.error('에러가 발생했습니다!');
+// performToast({ msg: '등록 완료!', type: 'success' });
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [isDark, setIsDark] = useState(false);
+  const toggleTheme = () => setIsDark(!isDark);
+
+  const apiUrl = import.meta.env.VITE_API_URL;
+  console.log(apiUrl);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {/* <IconButtons /> */}
+      {/* <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+        <GlobalStyle />
+        <ThemedBox onToggleTheme={toggleTheme} />
+      </ThemeProvider> */}
+      {/* <ToastContainer />; */}
+      {/* <SimpleForm /> */}
+      {/* <LoaderDemo /> */}
+      <TodoList />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
